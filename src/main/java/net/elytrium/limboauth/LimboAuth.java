@@ -52,10 +52,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.whitfin.siphash.SipHasher;
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
+import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -308,7 +305,7 @@ public class LimboAuth {
       );
     } catch (ReflectiveOperationException e) {
       throw new ReflectionException(e);
-    } catch (SQLException e) {
+    } catch (SQLException | SocketException e) {
       throw new SQLRuntimeException(e);
     } catch (IOException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
